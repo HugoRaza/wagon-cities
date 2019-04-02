@@ -4,26 +4,50 @@ body {
 }
 
 .app {
+  width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
-  .cities {
-    width: 30%;
-  }
-  .active-city {
-    width: 70%;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    h3 {
-      margin-top: 0;
-    }
+  justify-content: space-between;
+}
+
+.cities {
+  padding: 20px;
+  border: 1px white solid;
+  background-color: transparent;
+  cursor: pointer;
+  text-align: center;
+  &:hover {
+    background-color: white;
+    opacity: 0.7;
+    color: black;
   }
 }
 
+.active-city {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+  width: 90%;
+  font-size: 20px;
+}
+
 .list-group-item {
-  background-color: transparent;
-  cursor: pointer;
+
+}
+
+.city.selected {
+  border: 6px red dashed;
+}
+
+.city-picture {
+  width: 100%;
+}
+
+.select-city{
+  text-align: center;
+  position: center;
 }

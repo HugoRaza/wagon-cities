@@ -1,20 +1,36 @@
-import City from './city';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { setCities } from '../actions';
 
+import City from '../containers/city';
 
-const CityList = (props) => {
-  const renderList = () => {
-    return this.props.cities.map((city, index) => {
-      return (
-        {city.name}
-      );
-    });
-  };
+class CityList extends Component {
+  componentWillMount() {
+    this.props.setCities();
+  }
 
-  return (
-    <div className="flat-list">
-      {renderList()}
-    </div>
+  render() {
+    return (
+      <div>
+        {this.props.cities.map((city) => <City city={city} key={city.name} />)}
+      </div>
+    );
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    { setCities: setCities },
+    dispatch
   );
-};
-export default CityList;
+}
+
+function mapStateToProps(state) {
+  return {
+    cities: state.cities
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CityList);
 
